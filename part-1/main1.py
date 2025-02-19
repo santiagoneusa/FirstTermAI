@@ -21,8 +21,11 @@ if __name__ == '__main__':
         ]
 
         method = 'euclidean'
+
         maze = Maze(actions, matrix, method)
         maze.find_start_and_exits()
+
+        print('Solve with euclidean distance\n')
         maze.solve()
 
     main()

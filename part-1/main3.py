@@ -24,8 +24,11 @@ if __name__ == '__main__':
         ]
 
         method = 'euclidean'
+
         maze = Maze(actions, matrix_multiple_obstacles, method)
         maze.find_start_and_exits()
+
+        print('Multiple obstacles\n')
         maze.solve()
 
     main()

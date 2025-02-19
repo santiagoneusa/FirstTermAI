@@ -15,21 +15,21 @@ if __name__ == '__main__':
             ['#', 'S', ' ', ' ', '#', ' ', ' ', 'E', '#', '#'],
             ['#', '#', '#', ' ', '#', ' ', '#', ' ', ' ', '#'],
             ['#', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#', '#'],
-            ['#', '#', '#', '#', '#', ' ', '#', 'E', '#', '#'],
+            ['#', '#', ' ', '#', '#', ' ', '#', 'E', '#', '#'],
             ['#', ' ', 'E', ' ', '#', ' ', ' ', ' ', '#', '#'],
             ['#', '#', '#', ' ', '#', '#', '#', ' ', '#', '#'],
-            ['#', '#', '#', ' ', ' ', ' ', '#', ' ', ' ', '#'],
+            ['#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#'],
             ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
         ]
 
         method = 'euclidean'
         maze = Maze(actions, matrix_multiple_exits, method)
 
-        print('Multiple exits')
+        print('Multiple exits\n')
         maze.find_start_and_exits()
         maze.solve()
 
-        print('Nearest exit among multiple exits')
+        print('Nearest exit among multiple exits\n')
         maze.find_start_and_exits(nearest=True)
         maze.solve()
 

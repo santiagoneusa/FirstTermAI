@@ -17,12 +17,11 @@ class Node:
             movement_x = movement[0]
             movement_y = movement[1]
 
-            neighbor_coordinates = (
-                coordinate_x + movement_x,
-                coordinate_y + movement_y)
+            neighbor_coordinates = (coordinate_x + movement_x, coordinate_y + movement_y)
 
-            if maze[neighbor_coordinates[0]][neighbor_coordinates[1]] not in [' ', 'S', 'E']:
-                self.neighbors.append((neighbor_coordinates, action_taken))
+            if 0 <= neighbor_coordinates[0] < len(maze) and 0 <= neighbor_coordinates[1] < len(maze[0]):
+                if maze[neighbor_coordinates[0]][neighbor_coordinates[1]] in [' ', 'S', 'E']:
+                    self.neighbors.append((neighbor_coordinates, action_taken))
 
     def reconstruct_path(self):
         path_coordinates, path_actions_taken = [], []
