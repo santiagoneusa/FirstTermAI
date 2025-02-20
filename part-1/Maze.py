@@ -59,7 +59,7 @@ class Maze:
             if node.coordinates == exit_coordinate:
                 return node
 
-            for neighbor_coordinates, action_taken in node.neighbors:
+            for neighbor_coordinates, action_taken in node.get_neighbors():
                 new_path_cost = node.path_cost + 1
 
                 if neighbor_coordinates not in reached_nodes or new_path_cost < reached_nodes[neighbor_coordinates].path_cost:

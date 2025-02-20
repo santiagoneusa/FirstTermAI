@@ -23,6 +23,9 @@ class Node:
                 if maze[neighbor_coordinates[0]][neighbor_coordinates[1]] in [' ', 'S', 'E']:
                     self.neighbors.append((neighbor_coordinates, action_taken))
 
+    def get_neighbors(self):
+        return self.neighbors
+
     def reconstruct_path(self):
         path_coordinates, path_actions_taken = [], []
         node = self
