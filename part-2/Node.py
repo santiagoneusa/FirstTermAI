@@ -1,8 +1,9 @@
 class Node:
-    def __init__(self, state: str, parent: 'Node', graph: dict):
+    def __init__(self, state: str, parent: 'Node', graph: dict, depth: int =0):
         self.state: str = state
         self.parent: 'Node' = parent
         self.neighbors: dict = graph[state]
+        self.depth: int = depth
 
     def get_neighbors(self):
         return self.neighbors

@@ -29,5 +29,30 @@ class Graph:
 
         return None
 
-    def dfs(self):
-        pass
+    def dls(self, max_depth):
+        start_node = Node(self.start_state, None, self.graph, 0)
+        frontier = deque([start_node])
+        reached = {start_node.state: start_node}
+
+        while frontier:
+            node = frontier.pop()
+
+            if node.state == self.final_state:
+                return node
+            
+            if node.depth < max_depth:
+                for neighbor_state in node.get_neighbors():
+                    if neighbor_state not in reached:
+                        neighbor_node = Node(neighbor_state, node, self.graph, node.depth + 1)
+                        reached[neighbor_state] = neighbor_node
+                        frontier.append(neighbor_node)
+
+        return None
+
+    def ids(self, max_depth):
+        for depth in range(max_depth):
+            # print('Current depth:', depth)
+            result = self.dls(depth)
+
+            if result != None:
+                return result
