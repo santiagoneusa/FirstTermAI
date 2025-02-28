@@ -20,25 +20,23 @@ Ese programa contiene el problema planteado de la misma forma que está en el ju
 
 ## 1. ¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?
 
-El propósito de tener distancia es que actúa como la representación de una función heurística. Al tener en cuenta la distancia de cada punto hacia la salida, tenemos una forma de ponderar cada nodo en la matriz y así escoger el siguiente evaluado.
+El propósito de la función de costo es definir cómo se mide la distancia entre los nodos en la búsqueda del camino más corto. En este caso, la distancia actúa como una heurística que guía la exploración del laberinto.
 
 El problema funciona con distancia Manhattan, pero creamos una interfaz desde la que se pudiera interactuar con múltiples distancias en un archivo `DistanceManager`. Para escoger otro método de cálculo de la distancia, pero que siga con la misma lógica, desarrollamos el método euclidiano.
 
-Para probar la solución del problema con la distancia euclidiana, ejecute el archivo `main1.py`, donde se cambia la variable `method`:
+### Comparación entre Manhattan y Euclidiana
+- **Manhattan:** Se usa en movimientos restringidos a una cuadrícula, permitiendo solo desplazamientos en las direcciones arriba, abajo, izquierda y derecha. Esto puede resultar en caminos con más giros.
 
-**Antes:**
+- **Euclidiana:** Considera la distancia en línea recta entre dos puntos. Si se permiten movimientos diagonales, esta métrica puede producir caminos más cortos y eficientes.
 
-```python
-method = 'manhatan'
-```
+### Impacto en el algoritmo
+- Si el laberinto permite solo movimientos ortogonales, la distancia Manhattan es más adecuada.
 
-**Después:**
+- Si se permite el movimiento diagonal, la distancia Euclidiana puede generar rutas más eficientes.
 
-```python
-method = 'euclidean'
-```
+- La heurística afecta la exploración del laberinto, pudiendo alterar el orden en que se visitan los nodos y, en algunos casos, reduciendo la cantidad de nodos explorados.
 
-Ejecute:
+Para probar ambas distancias, ejecute:
 
 ```bash
 python main1.py
@@ -98,6 +96,8 @@ if nearest:
 
 De esta forma se crea una lista iterable con un solo valor, que se usa en la función `solve` anteriormente vista.
 
+Este método reduce el tiempo de ejecución en laberintos grandes con muchas salidas, ya que solo se explora un camino en lugar de calcular todos.
+
 ### Nota
 
 Para ver un ejemplo con múltiples soluciones, ejecute el programa `main2.py`:
@@ -130,6 +130,13 @@ if maze[neighbor_coordinates[0]][neighbor_coordinates[1]] not in [' ', 'S', 'E']
 
 Con esta nueva lógica, respaldamos tanto los `#` como cualquier otro símbolo futuro que represente un obstáculo.
 
+### Impacto de la mejora
+- Permite agregar nuevos tipos de obstáculos sin modificar el código.
+
+- Hace que el algoritmo sea más genérico y fácil de extender.
+
+- Reduce la posibilidad de errores en la interpretación del mapa.
+
 ### Nota
 
 Para ver un ejemplo con múltiples obstáculos, ejecute el archivo `main3.py`:
@@ -137,4 +144,3 @@ Para ver un ejemplo con múltiples obstáculos, ejecute el archivo `main3.py`:
 ```bash
 python main3.py
 ```
-
