@@ -42,9 +42,29 @@ if 0 <= neighbor_coordinates[0] < len(maze) and 0 <= neighbor_coordinates[1] < l
 
 ### 1. ¿Qué desafíos surgen al trasladar la solución del algoritmo de búsqueda desde el código teórico a la práctica con el robot?
 
-El desconocimiento sobre el programa ROS y Gazebo hizo imposible la programación del simulador. Sin embargo, desde lo que podemos intuir, un reto que dificultaría el paso del camino como lista a movimientos de un artefacto sería tener en cuenta hacia dónde queda mirando el robot después de cada movimiento. Por ejemplo, si el robot gira a la derecha, ahora todos los movimientos que haga hacia el frente harían que se desplace horizontalmente a la derecha.
+El desconocimiento sobre Ros y Gazebo marcó un obstáculo fuerte porque no conocíamos la tecnología. No entender cómo funcionaba el módullo por debajo pero tener que programar la simulación era complejo.
 
-Nuestra aproximación para que esto no ocurriera fue siempre hacer que el robot permanezca orientado al sur después de cada movimiento. Eso implica que para ir hacia adelante o atrás use velocidad lineal en el eje x, pero para ir a los costados haga un giro, se desplace y luego termine el giro (los 360 grados para que esté de nuevo mirando al sur).
+Relacionado con el aspecto anterior, encontramos que era complejo mantener los movimientos y rotaciones del robot porque cada uno de los movimientos comprendían un cambio de perspectiva constante. De esta forma fue necesario implementar un formateador de acciones poniéndose en la perspectiva del robot en todo momento.
+
+### `Node.py` - Función `reconstruct_path`
+
+```python
+path_actions_taken = []
+node = self
+
+while node.parent is not None:
+    path_actions_taken.insert(0, node.action_taken)
+    node = node.parent
+
+looking_at = initial_looking_at
+formated_path = []
+for direction in path_actions_taken:
+    if direction == 'north': # ...
+    elif direction == 'south': # ...
+    elif direction == 'west': # ...
+    elif direction == 'east': # ...
+return formated_path
+```
 
 ### 2. ¿Cuál es la diferencia entre los algoritmos de búsqueda no informada como BFS (Breadth-First Search) y DFS (Depth-First Search) en este problema del laberinto?
 
