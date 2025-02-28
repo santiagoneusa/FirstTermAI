@@ -27,7 +27,7 @@ class Node:
     def get_neighbors(self):
         return self.neighbors
 
-    def reconstruct_path(self):
+    def reconstruct_path(self, initial_looking_at='south'):
         path_actions_taken = []
         node = self
 
@@ -35,4 +35,52 @@ class Node:
             path_actions_taken.insert(0, node.action_taken)
             node = node.parent
 
-        return path_actions_taken
+        # Formatear el camino
+        looking_at = initial_looking_at
+        formated_path = []
+        for direction in path_actions_taken:
+            if direction == 'north':
+                if looking_at == 'north':
+                    formated_path.append('forward')
+                elif looking_at == 'south':
+                    formated_path.extend(['turn right', 'turn right', 'forward'])
+                elif looking_at == 'west':
+                    formated_path.extend(['turn right', 'forward'])
+                elif looking_at == 'east':
+                    formated_path.extend(['turn left', 'forward'])
+                looking_at = 'north'
+
+            elif direction == 'south':
+                if looking_at == 'north':
+                    formated_path.extend(['turn right', 'turn right', 'forward'])
+                elif looking_at == 'south':
+                    formated_path.append('forward')
+                elif looking_at == 'west':
+                    formated_path.extend(['turn left', 'forward'])
+                elif looking_at == 'east':
+                    formated_path.extend(['turn right', 'forward'])
+                looking_at = 'south'
+
+            elif direction == 'west':
+                if looking_at == 'north':
+                    formated_path.extend(['turn left', 'forward'])
+                elif looking_at == 'south':
+                    formated_path.extend(['turn right', 'forward'])
+                elif looking_at == 'west':
+                    formated_path.append('forward')
+                elif looking_at == 'east':
+                    formated_path.extend(['turn right', 'turn right', 'forward'])
+                looking_at = 'west'
+
+            elif direction == 'east':
+                if looking_at == 'north':
+                    formated_path.extend(['turn right', 'forward'])
+                elif looking_at == 'south':
+                    formated_path.extend(['turn left', 'forward'])
+                elif looking_at == 'west':
+                    formated_path.extend(['turn right', 'turn right', 'forward'])
+                elif looking_at == 'east':
+                    formated_path.append('forward')
+                looking_at = 'east'
+
+        return formated_path
