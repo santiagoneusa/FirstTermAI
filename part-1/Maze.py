@@ -4,7 +4,6 @@ from Node import Node
 
 
 class Maze:
-
     def __init__(self, actions, matrix, method):
         self.actions = actions
         self.matrix = matrix

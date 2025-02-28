@@ -1,6 +1,5 @@
 import math
 
-
 class DistanceManager:
     def get_distance(method, coordinates1, coordinates2):
         return getattr(DistanceManager, method)(coordinates1, coordinates2)
