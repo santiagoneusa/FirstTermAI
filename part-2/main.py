@@ -5,10 +5,10 @@ if __name__ == '__main__':
 
     def main():
         actions = {
-            (0, -1): 'Up',
-            (0, 1): 'Down',
-            (-1, 0): 'Left',
-            (1, 0): 'Right',
+            (0, -1): 'Left',
+            (0, 1): 'Right',
+            (-1, 0): 'Up',
+            (1, 0): 'Down',
         }
 
         matrix = maze = [

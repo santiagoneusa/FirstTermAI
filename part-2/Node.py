@@ -21,7 +21,7 @@ class Node:
             neighbor_coordinates = (coordinate_x + (movement_x * 2), coordinate_y + (movement_y * 2))
 
             if 0 <= neighbor_coordinates[0] < len(maze) and 0 <= neighbor_coordinates[1] < len(maze[0]):
-                if maze[wall_coordinates[1]][wall_coordinates[0]] in [' ', 'S', 'E']:
+                if maze[wall_coordinates[0]][wall_coordinates[1]] in [' ', 'S', 'E']:
                     self.neighbors.append((neighbor_coordinates, action_taken))
 
     def get_neighbors(self):
