@@ -29,7 +29,9 @@ if 0 <= neighbor_coordinates[0] < len(maze) and 0 <= neighbor_coordinates[1] < l
 ## Retos encontrados
 
 - La disposición de la matriz puede enfrentar un reto de entendimiento porque se duplican la cantidad de casillas, y el análisis de movimiento refiere a ver las contiguas pero moverse a las que están más allá. Sin embargo, pudimos realizarlo ya que el profesor nos guió para llegar a dicha solución.
-  
+
+![robot-maze](https://github.com/user-attachments/assets/12d741a3-be70-4b2f-bf1c-156d15502746)
+
 - Algo que sí fue imposible de lograr fueron los movimientos en Gazebo con ROS, puesto que la forma de renderización es muy inestable entre cada dispositivo.
 
 ## Posibles mejoras
