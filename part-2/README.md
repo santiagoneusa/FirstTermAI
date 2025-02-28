@@ -1,6 +1,3 @@
-Here is your content formatted in Markdown, along with some improvements for clarity and structure:
-
-```markdown
 # Código
 
 ## Lógica del algoritmo
