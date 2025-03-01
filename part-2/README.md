@@ -72,6 +72,15 @@ Las dimensiones del laberinto son muy pequeñas, así que no se podría notar un
 
 ### 3. ¿Cómo afecta el tamaño del laberinto a la eficiencia de BFS y DFS en términos de tiempo y espacio?
 
-- **BFS**: En laberintos grandes, BFS tiende a consumir más memoria porque almacena todos los nodos en cada nivel del árbol de búsqueda. Sin embargo, garantiza encontrar la solución óptima (el camino más corto) en términos de número de pasos.
-  
-- **DFS**: En laberintos grandes, DFS puede ser más eficiente en términos de memoria, ya que solo almacena un camino a la vez. Sin embargo, no garantiza encontrar la solución óptima y puede tardar más tiempo en laberintos complejos debido a su naturaleza de profundidad.
+#### BFS (Breadth-First Search)
+
+- Tiempo: En el peor caso, explora todos los nodos, con complejidad O(V + E). Si el laberinto es grande, el tiempo de ejecución aumenta considerablemente.
+- Espacio: Almacena todos los nodos a nivel de profundidad actual, lo que puede requerir O(mn) memoria en un laberinto de tamaño m × n. En laberintos grandes, esto lo vuelve ineficiente.
+
+#### DFS (Depth-First Search)
+
+- Tiempo: También tiene complejidad O(V + E), pero puede perder tiempo explorando caminos largos sin encontrar la mejor solución.
+- Espacio: Solo almacena los nodos en la pila de recursión, usando O(D) memoria, donde D es la profundidad del laberinto. Es más eficiente en memoria que BFS en laberintos grandes.
+
+#### Conclusión:
+Si el laberinto es grande, BFS se vuelve ineficiente por su alto consumo de memoria, mientras que DFS es más viable en términos de espacio. Sin embargo, BFS sigue siendo mejor si se necesita el camino más corto.
